@@ -1,2 +1,3 @@
 # datepicker
-simple javascript datepicker
+Simple javascript datepicker .
+Comming soon !
