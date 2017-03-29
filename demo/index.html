@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Datepicker</title>
+	<script src="../src/datepicker.js"></script>
+	<link rel="stylesheet" href="../src/datepicker.css" />
+</head>
+<body>
+<input id="date_input" type="text" readonly style="cursor: pointer;" />
+<p id="nickName"></p>
+<script>
+window.onload = function () {
+	var datepicker1 = datepicker({
+		format:'yyyy/mm/dd hh:ii:ss',
+		showTime:true,
+		invalid:function () {
+			alert('您输入的格式有误');
+        }
+	});
+};
+</script>
+</body>
+</html>
