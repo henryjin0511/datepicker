@@ -4,19 +4,68 @@
 	<meta charset="utf-8" />
 	<title>Datepicker</title>
 	<script src="../src/datepicker.js"></script>
+	<script src="../laydate/laydate.dev.js"></script>
 	<link rel="stylesheet" href="../src/datepicker.css" />
 </head>
 <body>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<input type="text" readonly onclick="laydate();"/>
+<input id="hello" type="text" readonly/>
 <input id="date_input" type="text" readonly style="cursor: pointer;" />
+<input type="text" readonly style="cursor: pointer;" onclick="datepicker();" />
 <p id="nickName"></p>
 <script>
 window.onload = function () {
 	var datepicker1 = datepicker({
-		format:'yyyy/mm/dd hh:ii:ss',
+		format:'yyyy-mm-dd hh:ii:ss',
 		showTime:true,
 		invalid:function () {
 			alert('您输入的格式有误');
-        }
+        },
+		change:function (value) {
+			//alert(value);
+		}
+	});
+	laydate({
+		elem: '#hello', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+		event: 'focus' //响应事件。如果没有传入event，则按照默认的click
 	});
 };
 </script>

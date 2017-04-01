@@ -8,7 +8,6 @@ $border-color: #d1ba91;
 $box-shadow-color: rgba(0 , 0 , 0 , .1);
 
 .datepicker-box {
-    display: none;
     position: absolute;
     border: 1px solid $border-color;
     box-shadow: 2px 2px 5px $box-shadow-color;
@@ -35,81 +34,110 @@ $box-shadow-color: rgba(0 , 0 , 0 , .1);
     }
 }
 
-.datepicker-default-top {
-    background: $top-bg-color;
-    padding: 0 10px;
-    height: 34px;
-    overflow: hidden;
-    text-align: center;
-    line-height: 34px;
-    font-size: 14px;
-
-    .text {
-        display: inline-block;
-        width: 140px;
-        vertical-align: top;
-
-        a:first-child {
-            margin-right: 10px;
-        }
+.datepicker-default {
+    a:hover,
+    span:hover {
+        text-decoration: underline;
     }
 
-    .turn {
-        display: inline-block;
-        margin: 0 5px;
-        width: 10px;
-        vertical-align: top;
-        font-size: 18px;
-    }
-}
-
-.datepicker-default-middle {
-    th {
-        border-bottom: 1px solid $border-color;
-        padding: 0;
-        height: 38px;
-        line-height: 37px;
-        font-weight: normal;
-    }
-
-    td {
-        cursor: pointer;
-        padding: 0;
+    &-top {
+        position: relative;
+        background: $top-bg-color;
+        height: 34px;
+        overflow: hidden;
         text-align: center;
-        line-height: 32px;
-
-        &.today {
-            background-color: $hover-bg-color;
-            font-weight: bold;
-        }
-
-        &:hover {
-            background-color: $less-hover-bg-color;
-            color: $main-font-color;
-        }
-
-        &.prev,
-        &.next {
-            color: $disabled-font-color;
-        }
-    }
-}
-
-.datepicker-default-bottom {
-    border-top: 1px solid $border-color;
-    padding: 5px 10px;
-    height: 34px;
-    overflow: hidden;
-    line-height: 24px;
-    font-size: 12px;
-
-    .time {
-        margin-right: 80px;
+        line-height: 34px;
+        font-size: 14px;
+        user-select: none;
     }
 
-    .pick-hour,
-    .pick-minute,
-    .pick-second {
+    &-bottom {
+        border-top: 1px solid $border-color;
+        padding: 5px 10px;
+        height: 34px;
+        overflow: hidden;
+        line-height: 24px;
+        font-size: 12px;
+    }
+
+    &-middle {
+        th {
+            border-bottom: 1px solid $border-color;
+            padding: 0;
+            height: 38px;
+            line-height: 37px;
+            font-weight: normal;
+        }
+
+        td {
+            cursor: pointer;
+            padding: 0;
+            text-align: center;
+            line-height: 32px;
+        }
+
+        span {
+            display: block;
+
+            &:hover {
+                background-color: $less-hover-bg-color;
+                color: $main-font-color;
+            }
+
+            &.today {
+                background-color: $hover-bg-color;
+                font-weight: bold;
+            }
+
+            &.prev,
+            &.next {
+                color: $disabled-font-color;
+            }
+        }
+    }
+
+    &-select-year,
+    &-select-month {
+        display: inline-block;
+        padding: 0 8px;
+        line-height: 34px;
+        color: $main-font-color;
+        font-size: 14px;
+    }
+
+    &-prev-year,
+    &-next-year,
+    &-prev-month,
+    &-next-month {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        cursor: pointer;
+        padding: 0 5px;
+        line-height: 34px;
+        color: $main-font-color;
+        font-size: 16px;
+    }
+
+    &-prev-year {
+        left: 10px;
+    }
+
+    &-prev-month {
+        left: 40px;
+    }
+
+    &-next-year {
+        right: 10px;
+    }
+
+    &-next-month {
+        right: 40px;
+    }
+
+    &-select-hour,
+    &-select-minute,
+    &-select-second {
         display: inline-block;
         border: 1px solid $border-color;
         width: 28px;
@@ -118,30 +146,26 @@ $box-shadow-color: rgba(0 , 0 , 0 , .1);
         color: $main-font-color;
     }
 
-    .opt {
+    &-opt {
         float: right;
-    }
 
-    .clear,
-    .now,
-    .confirm {
-        margin-left: 5px;
-        text-decoration: none;
-        line-height: 22px;
-        color: $main-font-color;
-        font-size: 14px;
-
-        &:hover {
-            text-decoration: underline;
-        }
-
-        &:first-child {
-            margin-left: 0;
+        &-clear,
+        &-today,
+        &-confirm {
+            margin-left: 5px;
+            text-decoration: none;
+            line-height: 22px;
+            color: $main-font-color;
+            font-size: 14px;
         }
     }
 }
 
-.datepicker-year {
+.datepicker-year,
+.datepicker-month,
+.datepicker-hour,
+.datepicker-minute,
+.datepicker-second {
     display: none;
     position: absolute;
     top: 0;
@@ -151,11 +175,26 @@ $box-shadow-color: rgba(0 , 0 , 0 , .1);
     height: 298px;
 }
 
-.datepicker-year-top {
-    @extend .datepicker-default-top;
+.datepicker-year-top,
+.datepicker-month-top,
+.datepicker-hour-top,
+.datepicker-minute-top,
+.datepicker-second-top {
+    position: relative;
+    background: $top-bg-color;
+    height: 34px;
+    overflow: hidden;
+    text-align: center;
+    line-height: 34px;
+    font-size: 14px;
+    user-select: none;
 }
 
-.datepicker-year-middle {
+.datepicker-year-middle,
+.datepicker-month-middle,
+.datepicker-hour-middle,
+.datepicker-minute-middle,
+.datepicker-second-middle {
     background: $middle-bg-color;
     width: 100%;
     height: 264px;
@@ -167,95 +206,43 @@ $box-shadow-color: rgba(0 , 0 , 0 , .1);
         font-size: 12px;
     }
 
-    td {
-        a {
-            display: block;
-            margin: 0 auto;
-            border-radius: 5px;
-            width: 56px;
-            height: 40px;
-            line-height: 40px;
-            font-size: 14px;
-
-            &:hover {
-                background: $less-hover-bg-color;
-            }
-        }
+    span {
+        display: block;
+        margin: 0 auto;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 56px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
 
         &.cur {
-            a {
+            background: $hover-bg-color;
+
+            &:hover {
                 background: $hover-bg-color;
             }
         }
+
+        &:hover {
+            background: $less-hover-bg-color;
+        }
     }
-}
-
-.datepicker-month {
-    @extend .datepicker-year;
-}
-
-.datepicker-month-top {
-    @extend .datepicker-default-top;
-}
-
-.datepicker-month-middle {
-    @extend .datepicker-year-middle;
-}
-
-.datepicker-hour {
-    @extend .datepicker-year;
-}
-
-.datepicker-hour-top {
-    background: $top-bg-color;
-    padding: 5px 10px;
-    height: 34px;
-    overflow: hidden;
-    text-align: center;
-    line-height: 24px;
-    font-size: 14px;
 }
 
 .datepicker-hour-middle {
-    @extend .datepicker-year-middle;
-
-    td {
-        a {
-            width: 48px;
-            height: 36px;
-            line-height: 36px;
-        }
+    span {
+        width: 48px;
+        height: 36px;
+        line-height: 36px;
     }
 }
 
-.datepicker-minute {
-    @extend .datepicker-year;
-}
-
-.datepicker-minute-top {
-    @extend .datepicker-hour-top;
-}
-
-.datepicker-minute-middle {
-    @extend .datepicker-hour-middle;
-
-    td {
-        a {
-            width: 100%;
-            height: 24px;
-            line-height: 24px;
-        }
-    }
-}
-
-.datepicker-second {
-    @extend .datepicker-year;
-}
-
-.datepicker-second-top {
-    @extend .datepicker-minute-top;
-}
-
+.datepicker-minute-middle,
 .datepicker-second-middle {
-    @extend .datepicker-minute-middle;
+    span {
+        width: 100%;
+        height: 24px;
+        line-height: 24px;
+    }
 }
