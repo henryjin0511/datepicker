@@ -2,6 +2,8 @@
 
 > 一款基于原生javascript制作的简易日历组件，支持年月日时分秒选择及自定义日期格式.测试兼容IE7+，IE6存在理论上的支持
 
+## [Demo page](https://jinming6568.github.io/datepicker/)
+
 ## 参数/Options
 
 | Name     | Type          | Default      | Description |
