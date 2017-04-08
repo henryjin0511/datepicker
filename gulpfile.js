@@ -78,24 +78,19 @@ gulp.task('dev', function() {
 gulp.task('deploy-html',function () {
 	return gulp.src('demo/*.html')
 		.pipe(plugins.replace(/\.\.\/src/g,'./src'))
-		.pipe(plugins.replace(/\.\.\/resource/g,'./resource'))
 		.pipe(gulp.dest('gh-pages/'));
 });
 gulp.task('deploy-res',function () {
 	return gulp.src('dist/*')
 		.pipe(gulp.dest('gh-pages/src/'));
 });
-gulp.task('deploy-resource',function () {
-	return gulp.src('resource/*')
-		.pipe(gulp.dest('gh-pages/resource/'));
-});
 gulp.task('release',['css','js'],function() {
 	return gulp.src(releaseSrc)
-		.pipe(plugins.zip('paging.zip'))
+		.pipe(plugins.zip('datepicker.zip'))
 		.pipe(gulp.dest(releasePath));
 });
 gulp.task('build',['css','js','release']);
-gulp.task('deploy',['deploy-html','deploy-res','deploy-resource'],function () {
+gulp.task('deploy',['deploy-html','deploy-res'],function () {
 	return gulp.src('./gh-pages/**/*')
 		.pipe(plugins.ghPages());
 });
