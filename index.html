@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Datepicker</title>
+	<script src="./src/datepicker.js"></script>
+	<link rel="stylesheet" href="./src/datepicker.css" />
+	<style type="text/css">
+		p{
+			text-align: center;
+		}
+		#input1{
+			margin: 30px auto;
+			padding: 0 10px;
+			display: block;
+			width: 200px;
+			height: 30px;
+			border: 1px solid #e4e4e4;
+			font-size: 14px;
+			cursor: pointer;
+		}
+		#span1{
+			margin: 30px auto;
+			padding: 0 10px;
+			display: block;
+			width: 200px;
+			height: 30px;
+			line-height: 30px;
+			border: 1px solid #e4e4e4;
+			font-size: 14px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+<p><a href="https://jinming6568.github.io/paging/release/datepicker.zip">下载</a></p>
+<br />
+<br />
+<br />
+<p>input元素测试<input id="input1" type="text" readonly /></p>
+<br />
+<br />
+<br />
+<p>普通元素测试<span id="span1"></span></p>
+<script>
+	if(document.addEventListener){
+		document.addEventListener('DOMContentLoaded',domCallback,false);
+	}else{
+		window.onload = domCallback;
+	}
+	function domCallback () {
+		datepicker({
+			triEle:'input1',
+			format:'yyyy-mm-dd hh:ii:ss',
+			showTime:true
+		});
+		datepicker({
+			triEle:'span1',
+			format:'yyyy/mm/dd',
+			showTime:false,
+			change:function (value) {
+				alert(value);
+			}
+		});
+	}
+</script>
+</body>
+</html>
